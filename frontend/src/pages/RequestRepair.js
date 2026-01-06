@@ -14,17 +14,18 @@ function RequestRepair() {
     return;
   }
 
-  fetch("https://repair-as-a-service-backend.onrender.com", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      itemType: itemType,
-      problem: problem,
-      address: address,
-    }),
-  })
+  fetch("https://repair-as-a-service-backend.onrender.com/repair-request", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    itemType,
+    problem,
+    address,
+  }),
+})
+
     .then((response) => response.json())
     .then((data) => {
       console.log("Response from server:", data);
