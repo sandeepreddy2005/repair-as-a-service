@@ -1,43 +1,57 @@
 import { useState } from "react";
 
 function RequestRepair() {
-  const [itemType, setItemType] = useState("");
-  const [problem, setProblem] = useState("");
-  const [address, setAddress] = useState("");
+  const [formData, setFormData] = useState({
+    customerName: "",
+    phone: "",
+    email: "",
+    category: "",
+    itemType: "",
+    problem: "",
+    pickupDate: "",
+    address: "",
+  });
+
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e) {
-  e.preventDefault();
-
-  if (!itemType || !problem || !address) {
-    alert("Please fill all fields before submitting.");
-    return;
+  function handleChange(e) {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   }
 
-  fetch("https://repair-as-a-service-backend.onrender.com/repair-request", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    itemType,
-    problem,
-    address,
-  }),
-})
+  async function handleSubmit(e) {
+    e.preventDefault();
 
-    .then((response) => response.json())
-    .then((data) => {
+    // Basic validation
+    for (let key in formData) {
+      if (!formData[key]) {
+        alert("Please fill all fields before submitting.");
+        return;
+      }
+    }
+
+    try {
+      const response = await fetch(
+        "https://repair-as-a-service-backend.onrender.com/repair-request",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
       console.log("Response from server:", data);
       setSubmitted(true);
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Error:", error);
       alert("Failed to submit repair request");
-    });
-}
-
-
+    }
+  }
 
   return (
     <div className="app">
@@ -49,25 +63,64 @@ function RequestRepair() {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Item type (Shoes, Jacket, Phone)"
-            value={itemType}
-            onChange={(e) => setItemType(e.target.value)}
+            name="customerName"
+            placeholder="Your Name"
+            onChange={handleChange}
           />
-          <br /><br />
-
-          <textarea
-            placeholder="Describe the problem"
-            value={problem}
-            onChange={(e) => setProblem(e.target.value)}
-          ></textarea>
           <br /><br />
 
           <input
             type="text"
-            placeholder="Pickup address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+            name="phone"
+            placeholder="Phone Number"
+            onChange={handleChange}
           />
+          <br /><br />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            onChange={handleChange}
+          />
+          <br /><br />
+
+          <select name="category" onChange={handleChange}>
+            <option value="">Select Category</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Appliances">Appliances</option>
+          </select>
+          <br /><br />
+
+          <input
+            type="text"
+            name="itemType"
+            placeholder="Item Type (Shoes, Phone, Jacket)"
+            onChange={handleChange}
+          />
+          <br /><br />
+
+          <textarea
+            name="problem"
+            placeholder="Describe the problem"
+            onChange={handleChange}
+          ></textarea>
+          <br /><br />
+
+          <input
+            type="date"
+            name="pickupDate"
+            onChange={handleChange}
+          />
+          <br /><br />
+
+          <textarea
+            name="address"
+            placeholder="Pickup Address"
+            onChange={handleChange}
+          ></textarea>
           <br /><br />
 
           <button type="submit">Submit Request</button>
