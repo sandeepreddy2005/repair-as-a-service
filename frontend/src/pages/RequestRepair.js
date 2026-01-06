@@ -14,7 +14,7 @@ function RequestRepair() {
     return;
   }
 
-  fetch("https://repair-as-a-service-backend.onrender.com/repair-request", {
+  fetch("https://repair-as-a-service-backend.onrender.com", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
