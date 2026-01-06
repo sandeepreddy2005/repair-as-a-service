@@ -26,7 +26,7 @@ mongoose
 ====================== */
 const RepairSchema = new mongoose.Schema(
   {
-    customerFullName: { type: String, required: true },
+    customerName: { type: String, required: true },
     phone: { type: String, required: true },
     email: { type: String, required: true },
     category: { type: String, required: true },
