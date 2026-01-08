@@ -50,8 +50,39 @@ function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* TESTIMONIALS */}
       <section style={styles.sectionAlt}>
+        <h2 style={styles.sectionTitle}>What Our Customers Say</h2>
+
+        <div style={styles.testimonialContainer}>
+          <div style={styles.testimonialCard}>
+            <p style={styles.testimonialText}>
+              “My shoes were repaired perfectly and delivered on time.
+              Very convenient and affordable.”
+            </p>
+            <h4 style={styles.testimonialName}>— Sai, Hyderabad</h4>
+          </div>
+
+          <div style={styles.testimonialCard}>
+            <p style={styles.testimonialText}>
+              “Instead of buying new, I repaired my jacket.
+              Great quality work and eco-friendly.”
+            </p>
+            <h4 style={styles.testimonialName}>— Pradeep, Medak</h4>
+          </div>
+
+          <div style={styles.testimonialCard}>
+            <p style={styles.testimonialText}>
+              “Pickup and delivery were smooth.
+              The technician fixed my phone quickly.”
+            </p>
+            <h4 style={styles.testimonialName}>— Karthik, Gajwel</h4>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section style={styles.section}>
         <h2 style={styles.sectionTitle}>How It Works</h2>
         <div style={styles.steps}>
           <div style={styles.step}>1️⃣ Request Pickup</div>
@@ -66,6 +97,22 @@ function Home() {
         © 2024 Repair-as-a-Service · Sustainable · Reliable · Local
       </footer>
 
+      {/* SAFE ANIMATION STYLES */}
+      <style>
+        {`
+          @keyframes fadeUp {
+            from {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
+
     </div>
   );
 }
@@ -76,11 +123,10 @@ const styles = {
     color: "#1f2937",
   },
 
-  /* HERO */
   hero: {
     minHeight: "70vh",
     background: "linear-gradient(135deg, #2563eb, #1e40af)",
-    color: "white",                 // 🔥 FORCE WHITE TEXT
+    color: "white",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -92,7 +138,7 @@ const styles = {
   title: {
     fontSize: "46px",
     marginBottom: "16px",
-    color: "white",                 // 🔥 EXPLICIT WHITE
+    color: "white",
   },
 
   subtitle: {
@@ -100,7 +146,7 @@ const styles = {
     maxWidth: "650px",
     marginBottom: "30px",
     lineHeight: "1.6",
-    color: "white",                 // 🔥 EXPLICIT WHITE
+    color: "white",
   },
 
   heroButton: {
@@ -114,7 +160,6 @@ const styles = {
     transition: "0.3s",
   },
 
-  /* SIMPLE ANIMATIONS */
   fadeIn: {
     animation: "fadeUp 1.2s ease forwards",
   },
@@ -123,7 +168,6 @@ const styles = {
     animation: "fadeUp 1.6s ease forwards",
   },
 
-  /* SECTIONS */
   section: {
     padding: "60px 20px",
     textAlign: "center",
@@ -140,7 +184,6 @@ const styles = {
     marginBottom: "30px",
   },
 
-  /* CARDS */
   cardContainer: {
     display: "flex",
     justifyContent: "center",
@@ -159,7 +202,34 @@ const styles = {
     cursor: "pointer",
   },
 
-  /* STEPS */
+  testimonialContainer: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "24px",
+    flexWrap: "wrap",
+    marginTop: "30px",
+  },
+
+  testimonialCard: {
+    backgroundColor: "white",
+    padding: "24px",
+    width: "280px",
+    borderRadius: "12px",
+    boxShadow: "0 6px 16px rgba(0,0,0,0.08)",
+  },
+
+  testimonialText: {
+    fontSize: "15px",
+    lineHeight: "1.6",
+    marginBottom: "12px",
+  },
+
+  testimonialName: {
+    fontSize: "14px",
+    fontWeight: "bold",
+    color: "#2563eb",
+  },
+
   steps: {
     display: "flex",
     justifyContent: "center",
@@ -175,7 +245,6 @@ const styles = {
     fontWeight: "500",
   },
 
-  /* FOOTER */
   footer: {
     backgroundColor: "#0f172a",
     color: "white",
@@ -184,21 +253,5 @@ const styles = {
     fontSize: "14px",
   },
 };
-
-/* GLOBAL KEYFRAMES */
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-`;
-document.head.appendChild(style);
 
 export default Home;
