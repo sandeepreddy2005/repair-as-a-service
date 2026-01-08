@@ -52,20 +52,31 @@ const styles = {
     fontFamily: "Arial, sans-serif",
   },
 
+  /* ⭐ HERO SECTION WITH DARK OVERLAY */
   hero: {
-    backgroundColor: "#2563eb",
-    padding: "60px 20px",
+    padding: "140px 20px",
+    color: "white",
+    backgroundImage:
+      "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://media.istockphoto.com/id/1199145131/photo/technical-support-concept-maintenance-sign-wrench-and-srewdriver-tools-tech-issues-fix-service.jpg?s=612x612&w=0&k=20&c=VdrYSzbn6cg8GtCauYmzxfsKqxLdAErHf26g7p_xAY0=')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  },
+
+  /* TEXT NOW BRIGHT AND VISIBLE */
+  title: {
+    fontSize: "48px",
+    fontWeight: "bold",
+    marginBottom: "15px",
     color: "white",
   },
 
-  title: {
-    fontSize: "40px",
-    marginBottom: "10px",
-  },
-
   subtitle: {
-    fontSize: "18px",
-    marginBottom: "20px",
+    fontSize: "20px",
+    maxWidth: "600px",
+    margin: "0 auto 25px",
+    lineHeight: "1.5",
+    color: "white",
   },
 
   heroButton: {
@@ -75,8 +86,10 @@ const styles = {
     borderRadius: "8px",
     textDecoration: "none",
     fontWeight: "bold",
+    fontSize: "16px",
   },
 
+  /* SERVICES + HOW IT WORKS */
   section: {
     padding: "40px 20px",
   },
@@ -100,6 +113,7 @@ const styles = {
     borderRadius: "10px",
     fontSize: "16px",
     boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+    transition: "0.3s",
   },
 
   list: {
