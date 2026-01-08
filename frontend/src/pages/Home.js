@@ -92,12 +92,39 @@ function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer style={styles.footer}>
-        © 2024 Repair-as-a-Service · Sustainable · Reliable · Local
-      </footer>
+     {/* FOOTER */}
+<footer style={styles.footer}>
+  <div style={styles.footerContent}>
 
-      {/* SAFE ANIMATION STYLES */}
+    <h2 style={styles.footerTitle}>Repair-as-a-Service</h2>
+
+    <p style={styles.footerText}>
+      👨‍💻 Built by <strong style={{ color: "#ffffff" }}>Sandeep Reddy</strong>
+    </p>
+
+    <p style={styles.footerText}>
+      📞 Contact: <strong style={{ color: "#ffffff" }}>6281455819</strong>
+    </p>
+
+    <p style={styles.footerSustainability}>
+      ♻️ Sustainability Promise: We promote repairing instead of replacing,
+      reducing waste, supporting local repair experts, and lowering carbon emissions.
+    </p>
+
+    <a
+      href="https://github.com/sandeepreddy2005/repair-as-a-service"
+      target="_blank"
+      rel="noreferrer"
+      style={styles.footerLink}
+    >
+      🔗 View Project on GitHub
+    </a>
+
+  </div>
+</footer>
+
+
+      {/* SAFE ANIMATION KEYFRAMES */}
       <style>
         {`
           @keyframes fadeUp {
@@ -246,12 +273,45 @@ const styles = {
   },
 
   footer: {
-    backgroundColor: "#0f172a",
-    color: "white",
-    textAlign: "center",
-    padding: "20px",
-    fontSize: "14px",
-  },
+  backgroundColor: "#020617",   // darker background
+  color: "#ffffff",
+  textAlign: "center",
+  padding: "50px 20px",
+},
+
+footerContent: {
+  maxWidth: "900px",
+  margin: "0 auto",
+},
+
+footerTitle: {
+  fontSize: "22px",
+  marginBottom: "15px",
+  color: "#ffffff",
+},
+
+footerText: {
+  fontSize: "16px",            // ⬆ bigger text
+  marginBottom: "10px",
+  color: "#ffffff",
+},
+
+footerSustainability: {
+  fontSize: "15px",
+  lineHeight: "1.6",
+  color: "#e5e7eb",
+  margin: "15px 0",
+},
+
+footerLink: {
+  display: "inline-block",
+  marginTop: "15px",
+  color: "#60a5fa",
+  textDecoration: "none",
+  fontSize: "16px",
+  fontWeight: "bold",
+},
+
 };
 
 export default Home;
