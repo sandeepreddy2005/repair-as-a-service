@@ -26,17 +26,38 @@ mongoose
 ====================== */
 const RepairSchema = new mongoose.Schema(
   {
-    customerName: { type: String, required: true },
-    phone: { type: String, required: true },
-    email: { type: String, required: true },
-    category: { type: String, required: true },
-    itemType: { type: String, required: true },
-    problem: { type: String, required: true },
-    pickupDate: { type: String, required: true },
-    address: { type: String, required: true },
+    customerName: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
+    },
+    itemType: {
+      type: String,
+      required: true,
+    },
+    problem: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
+
 
 const Repair = mongoose.model("Repair", RepairSchema);
 
