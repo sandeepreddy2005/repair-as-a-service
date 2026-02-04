@@ -23,7 +23,6 @@ function RequestRepair() {
     e.preventDefault();
     setError("");
 
-    // Simple validation
     for (let key in formData) {
       if (!formData[key]) {
         setError("Please fill all fields before submitting.");
@@ -84,32 +83,44 @@ function RequestRepair() {
       {error && <p style={styles.error}>{error}</p>}
 
       <form onSubmit={handleSubmit} style={styles.form}>
+
+        {/* CUSTOMER DETAILS */}
+        <h3 style={styles.sectionTitle}>Customer Details</h3>
+
+        <label style={styles.label}>Full Name</label>
         <input
           name="customerName"
-          placeholder="Your Name"
           value={formData.customerName}
           onChange={handleChange}
+          style={styles.input}
         />
 
+        <label style={styles.label}>Phone Number</label>
         <input
           name="phone"
-          placeholder="Phone Number"
           value={formData.phone}
           onChange={handleChange}
+          style={styles.input}
         />
 
+        <label style={styles.label}>Email Address</label>
         <input
-          name="email"
           type="email"
-          placeholder="Email Address"
+          name="email"
           value={formData.email}
           onChange={handleChange}
+          style={styles.input}
         />
 
+        {/* REPAIR DETAILS */}
+        <h3 style={styles.sectionTitle}>Repair Details</h3>
+
+        <label style={styles.label}>Category</label>
         <select
           name="category"
           value={formData.category}
           onChange={handleChange}
+          style={styles.input}
         >
           <option value="">Select Category</option>
           <option value="Electronics">Electronics</option>
@@ -118,30 +129,34 @@ function RequestRepair() {
           <option value="Appliances">Appliances</option>
         </select>
 
+        <label style={styles.label}>Item Type</label>
         <input
           name="itemType"
-          placeholder="Item Type (Phone, Shoes, Jacket)"
           value={formData.itemType}
           onChange={handleChange}
+          style={styles.input}
         />
 
+        <label style={styles.label}>Problem Description</label>
         <textarea
           name="problem"
-          placeholder="Describe the problem"
           value={formData.problem}
           onChange={handleChange}
+          style={styles.textarea}
         />
 
+        <label style={styles.label}>Pickup Address</label>
         <textarea
           name="address"
-          placeholder="Pickup Address"
           value={formData.address}
           onChange={handleChange}
+          style={styles.textarea}
         />
 
         <button type="submit" style={styles.button} disabled={loading}>
           {loading ? "Submitting..." : "Submit Request"}
         </button>
+
       </form>
     </div>
   );
@@ -149,12 +164,13 @@ function RequestRepair() {
 
 const styles = {
   container: {
-    maxWidth: "500px",
+    maxWidth: "520px",
     margin: "40px auto",
     padding: "30px",
-    borderRadius: "12px",
+    borderRadius: "14px",
     boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
     fontFamily: "Arial, sans-serif",
+    backgroundColor: "white",
   },
 
   title: {
@@ -165,11 +181,41 @@ const styles = {
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "12px",
+  },
+
+  sectionTitle: {
+    marginTop: "20px",
+    marginBottom: "10px",
+    fontSize: "18px",
+    color: "#1e40af",
+  },
+
+  label: {
+    fontSize: "14px",
+    fontWeight: "bold",
+    marginBottom: "4px",
+    color: "#374151",
+  },
+
+  input: {
+    padding: "10px",
+    borderRadius: "6px",
+    border: "1px solid #d1d5db",
+    marginBottom: "12px",
+    fontSize: "14px",
+  },
+
+  textarea: {
+    padding: "10px",
+    borderRadius: "6px",
+    border: "1px solid #d1d5db",
+    marginBottom: "12px",
+    fontSize: "14px",
+    minHeight: "80px",
   },
 
   button: {
-    marginTop: "10px",
+    marginTop: "16px",
     padding: "12px",
     borderRadius: "8px",
     border: "none",
