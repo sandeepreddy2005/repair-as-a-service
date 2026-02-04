@@ -99,7 +99,7 @@ function Home() {
     <h2 style={styles.footerTitle}>Repair-as-a-Service</h2>
 
     <p style={styles.footerText}>
-      👨‍💻 Built by <strong style={{ color: "#ffffff" }}>Sandeep Reddy</strong>
+      👨‍💻 Built by <strong style={{ color: "#ffffff" }}>Sandeep Reddy Pasham</strong>
     </p>
 
     <p style={styles.footerText}>
