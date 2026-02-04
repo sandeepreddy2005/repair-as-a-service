@@ -109,6 +109,7 @@ function Home() {
     <p style={styles.footerSustainability}>
       ♻️ Sustainability Promise: We promote repairing instead of replacing,
       reducing waste, supporting local repair experts, and lowering carbon emissions.
+
     </p>
 
     <a
@@ -298,9 +299,12 @@ footerText: {
 
 footerSustainability: {
   fontSize: "15px",
-  lineHeight: "1.6",
+  lineHeight: "1.8",
   color: "#e5e7eb",
-  margin: "15px 0",
+  textAlign: "center",     // ✅ FORCE CENTER
+  maxWidth: "700px",       // ✅ PREVENT WIDE STRETCH
+  margin: "20px auto",     // ✅ PERFECT CENTERING
+
 },
 
 footerLink: {
