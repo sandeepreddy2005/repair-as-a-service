@@ -2,11 +2,16 @@ import { useState, useEffect } from "react";
 
 function RequestRepair() {
 
-  // 🔐 STEP 4: PROTECT PAGE
+  // 🔐 AUTH CHECK STATE (FIXES UI FLICKER)
+  const [checkingAuth, setCheckingAuth] = useState(true);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
+
     if (!token) {
       window.location.href = "/login";
+    } else {
+      setCheckingAuth(false);
     }
   }, []);
 
@@ -48,7 +53,7 @@ function RequestRepair() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"), // 🔐 JWT TOKEN
+            Authorization: localStorage.getItem("token"),
           },
           body: JSON.stringify(formData),
         }
@@ -71,6 +76,11 @@ function RequestRepair() {
     } finally {
       setLoading(false);
     }
+  }
+
+  // ⛔ BLOCK UI UNTIL AUTH CHECK COMPLETES
+  if (checkingAuth) {
+    return null; // or return <p>Checking access...</p>;
   }
 
   if (submitted) {
@@ -96,7 +106,6 @@ function RequestRepair() {
 
       <form onSubmit={handleSubmit} style={styles.form}>
 
-        {/* CUSTOMER DETAILS */}
         <h3 style={styles.sectionTitle}>Customer Details</h3>
 
         <label style={styles.label}>Full Name</label>
@@ -124,7 +133,6 @@ function RequestRepair() {
           style={styles.input}
         />
 
-        {/* REPAIR DETAILS */}
         <h3 style={styles.sectionTitle}>Repair Details</h3>
 
         <label style={styles.label}>Category</label>
@@ -184,31 +192,26 @@ const styles = {
     fontFamily: "Arial, sans-serif",
     backgroundColor: "white",
   },
-
   title: {
     textAlign: "center",
     marginBottom: "20px",
   },
-
   form: {
     display: "flex",
     flexDirection: "column",
   },
-
   sectionTitle: {
     marginTop: "20px",
     marginBottom: "10px",
     fontSize: "18px",
     color: "#1e40af",
   },
-
   label: {
     fontSize: "14px",
     fontWeight: "bold",
     marginBottom: "4px",
     color: "#374151",
   },
-
   input: {
     padding: "10px",
     borderRadius: "6px",
@@ -216,7 +219,6 @@ const styles = {
     marginBottom: "12px",
     fontSize: "14px",
   },
-
   textarea: {
     padding: "10px",
     borderRadius: "6px",
@@ -225,7 +227,6 @@ const styles = {
     fontSize: "14px",
     minHeight: "80px",
   },
-
   button: {
     marginTop: "16px",
     padding: "12px",
@@ -236,13 +237,11 @@ const styles = {
     fontWeight: "bold",
     cursor: "pointer",
   },
-
   error: {
     color: "red",
     textAlign: "center",
     marginBottom: "10px",
   },
-
   successBox: {
     maxWidth: "500px",
     margin: "80px auto",
