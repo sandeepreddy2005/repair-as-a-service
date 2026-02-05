@@ -1,6 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function RequestRepair() {
+
+  // 🔐 STEP 4: PROTECT PAGE
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/login";
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     customerName: "",
     phone: "",
@@ -37,7 +46,10 @@ function RequestRepair() {
         "https://repair-as-a-service-backend.onrender.com/repair-request",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"), // 🔐 JWT TOKEN
+          },
           body: JSON.stringify(formData),
         }
       );
