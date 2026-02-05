@@ -124,7 +124,7 @@ function RequestRepair() {
         >
           <option value="">Select Category</option>
           <option value="Electronics">Electronics</option>
-          <option value="Footwear">Footwear</option>
+          <option value="Bag & Luggage">Bag & Luggage</option>
           <option value="Clothing">Clothing</option>
           <option value="Appliances">Appliances</option>
         </select>

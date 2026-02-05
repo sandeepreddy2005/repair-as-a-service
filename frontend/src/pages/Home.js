@@ -11,7 +11,7 @@ function Home() {
         </h1>
 
         <p style={{ ...styles.subtitle, ...styles.fadeInDelay }}>
-          Fast, reliable doorstep repair for shoes, clothing, electronics and more —
+          Fast, reliable doorstep repair for Bag & Luggage, clothing, electronics and more —
           powered by trusted local experts.
         </p>
 
@@ -29,7 +29,7 @@ function Home() {
       <section style={styles.section}>
         <h2 style={styles.sectionTitle}>What We Repair</h2>
         <div style={styles.cardContainer}>
-          {["Electronics", "Footwear", "Clothing", "Appliances"].map((item) => (
+          {["Electronics", "Bag & Luggage", "Clothing", "Appliances"].map((item) => (
             <div
               key={item}
               style={styles.card}
@@ -57,8 +57,8 @@ function Home() {
         <div style={styles.testimonialContainer}>
           <div style={styles.testimonialCard}>
             <p style={styles.testimonialText}>
-              “My shoes were repaired perfectly and delivered on time.
-              Very convenient and affordable.”
+              “Instead of buying a new bag, I repaired my old one.
+               Great quality work and eco-friendly service.”
             </p>
             <h4 style={styles.testimonialName}>— Sai, Hyderabad</h4>
           </div>
